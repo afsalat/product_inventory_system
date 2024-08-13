@@ -1,0 +1,49 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+
+# Django static and media files
+/staticfiles/
+/media/
+/uploads/
+
+# Local development files
+*.sqlite3
+*.log
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Test coverage and reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Miscellaneous
+*.swp
+*.bak
+*.tmp
+*.~ 
+
+# Deployment files
+*.env
+.env.*
+.env.bak
