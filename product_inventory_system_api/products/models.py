@@ -1,4 +1,5 @@
 from django.db import models
+from rest_framework.pagination import PageNumberPagination
 from versatileimagefield.fields import VersatileImageField
 from django.utils.translation import gettext_lazy as _
 import uuid
@@ -38,3 +39,9 @@ class SubVariant(models.Model):
 
     class Meta:
         unique_together = (('variant', 'option'),)
+
+
+class ProductPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100

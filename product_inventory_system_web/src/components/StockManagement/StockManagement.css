@@ -1,0 +1,51 @@
+/* Styling for the StockManagement component */
+
+.stock-management {
+    padding: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 22px);
+    font-size: 1em;
+    box-sizing: border-box; /* Adjusts width calculation */
+}
+
+.buttons {
+    text-align: center;
+}
+
+.button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #282c34;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

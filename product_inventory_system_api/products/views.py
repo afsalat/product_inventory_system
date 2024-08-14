@@ -2,9 +2,10 @@ import traceback
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Products, Variant, SubVariant
+from .models import ProductPagination, Products, Variant, SubVariant
 from .serializers import ProductSerializer
 from rest_framework import generics
+
 
 
 # Endpoint: create new product
@@ -13,7 +14,7 @@ def create_product(request):
     try: 
         serializer = ProductSerializer(data=request.data)
         if not serializer.is_valid():
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, status=404)
         
         variants = request.data.get('variants', [])
         product = serializer.save()
@@ -26,55 +27,82 @@ def create_product(request):
         return Response({"message": "successfully added"}, status=200) 
     except Exception as e:
         print(traceback.format_exc())
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({"error": str(e)}, status=500)
+
 
 
 
 # Endpoint: add stock (purchase)
 @api_view(['PATCH'])
-def add_stock(request, subvariant_id):
+def add_stock(request):
     try:
-        subvariant = SubVariant.objects.get(id=subvariant_id)
-        if not subvariant:
-            return Response(subvariant.errors, status=status.HTTP_400_BAD_REQUEST)
+        productname = request.data.get('productname')
+        variantname = request.data.get('variantname')
+        option = request.data.get('option')
+        stock_to_add = int(request.data.get('stock', 0))
 
-        stock_to_add = request.data.get('stock', 0)
+        product = Products.objects.filter(ProductName=productname).first()
+        variant = Variant.objects.filter(name=variantname,product=product).first()
+        subvariant = SubVariant.objects.filter(variant=variant,option=option).first()
+
+        if not subvariant:
+            return Response({'error': 'SubVariant or Product not found'}, status=404)
+
         if stock_to_add <= 0:
-            return Response({'error': 'Invalid stock amount'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'Invalid stock amount'}, status=404)
 
         subvariant.stock += stock_to_add
         subvariant.save()
-        return Response({"message":"Stock Successfully Purchase"}, status=200)
-    
+        return Response({"message": "Stock successfully added"}, status=200)
+
     except Exception as e:
         print(traceback.format_exc())
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({"error": str(e)}, status=500)
+
 
 
 
 # Endpoint: remove stock (selling)
 @api_view(['PATCH'])
-def remove_stock(request, subvariant_id):
+def remove_stock(request):
     try:
-        subvariant = SubVariant.objects.get(id=subvariant_id)
+        productname = request.data.get('productname')
+        variantname = request.data.get('variantname')
+        option = request.data.get('option')
+        stock_to_add = int(request.data.get('stock', 0))
+
+        product = Products.objects.filter(ProductName=productname).first()
+        variant = Variant.objects.filter(name=variantname,product=product).first()
+        subvariant = SubVariant.objects.filter(variant=variant,option=option).first()
+
         if not subvariant:
-            return Response({'error': 'SubVariant not found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'SubVariant or Product not found'}, status=404)
 
-        stock_to_remove = request.data.get('stock', 0)
-        if stock_to_remove <= 0 or stock_to_remove > subvariant.stock:
-            return Response({'error': 'Invalid stock amount'}, status=status.HTTP_400_BAD_REQUEST)
+        if stock_to_add <= 0:
+            return Response({'error': 'Invalid stock amount'}, status=404)
 
-        subvariant.stock -= stock_to_remove
+        subvariant.stock -= stock_to_add
         subvariant.save()
-        return Response({"message":"Stock Successfully Sell"}, status=200)
+        return Response({"message": "Stock successfully added"}, status=200)
 
     except Exception as e:
         print(traceback.format_exc())
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({"error": str(e)}, status=500)
+
+
+
 
 
 
 # Endpoint: view all products
-class ProductListView(generics.ListAPIView):
-    queryset = Products.objects.all()
-    serializer_class = ProductSerializer
+# class ProductListView(generics.ListAPIView):
+#     queryset = Products.objects.all()
+#     serializer_class = ProductSerializer
+
+@api_view(['GET'])
+def ProductListView(request):
+    products = Products.objects.all()
+    paginator = ProductPagination()
+    result_page = paginator.paginate_queryset(products, request)
+    serializer = ProductSerializer(result_page, many=True)
+    return paginator.get_paginated_response(serializer.data)
