@@ -1,0 +1,9 @@
+.product-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.product-list h1 {
+    font-size: 2rem;
+    color: #333;
+}
