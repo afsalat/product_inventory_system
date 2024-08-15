@@ -9,10 +9,10 @@ json
 Copy code
 {
     "ProductName": "Sample Product",
-    "ProductID": "SP12345",
+    "ProductID": 678767,
     "ProductCode": "SAMP123",
     "Totalstock": 100,
-    "CreatedUser": "admin",
+    "CreatedUser": 2,
     "variants": [
         {
             "name": "Size",
@@ -43,8 +43,9 @@ Payload:
 json
 Copy code
 {
-    "subvariant_id": 1,
-    "product_id": 123,
+    "productname": "shirt",
+    "variantname": "size",
+    "option":"m",
     "stock": 50
 }
 Example Payload for Removing Stock
@@ -58,9 +59,10 @@ Payload:
 json
 Copy code
 {
-    "subvariant_id": 1,
-    "product_id": 123,
-    "stock": 20
+    "productname": "shirt",
+    "variantname": "size",
+    "option":"m",
+    "stock": 50
 }
 Example Payload for Fetching Products
 GET Request to Fetch Products:
@@ -78,10 +80,10 @@ Copy code
         {
             "id": 1,
             "ProductName": "Sample Product",
-            "ProductID": "SP12345",
+            "ProductID": 12345,
             "ProductCode": "SAMP123",
             "Totalstock": 100,
-            "CreatedUser": "admin",
+            "CreatedUser": 1,
             "variants": [
                 {
                     "name": "Size",
