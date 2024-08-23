@@ -10,6 +10,17 @@ function StockManagement() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
+
+
+
+
+
+
+
+
+
+
+
     const handleAddStock = async () => {
         if (!productName || !variantName || !option || !stock) {
             setError('Product Name, Variant Name, Option, and Stock are required.');
@@ -35,6 +46,12 @@ function StockManagement() {
         }
     };
 
+
+
+
+
+
+
     const handleRemoveStock = async () => {
         if (!productName || !variantName || !option || !stock) {
             setError('Product Name, Variant Name, Option, and Stock are required.');
@@ -59,6 +76,22 @@ function StockManagement() {
             }
         }
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     return (
         <div className="stock-management">

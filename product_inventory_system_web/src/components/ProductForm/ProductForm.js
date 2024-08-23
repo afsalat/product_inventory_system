@@ -8,9 +8,19 @@ function ProductForm() {
     const [variantOptions, setVariantOptions] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
 
+
+
+
+
+
     const handleProductChange = (e) => {
         setProduct({ ...product, [e.target.name]: e.target.value });
     };
+
+
+
+
+
 
     const handleVariantAdd = () => {
         if (!variantName || !variantOptions) {
@@ -30,12 +40,22 @@ function ProductForm() {
         setErrorMessage(null);
     };
 
+
+
+
+
+
     const handleVariantRemove = (index) => {
         setProduct({
             ...product,
             variants: product.variants.filter((_, i) => i !== index)
         });
     };
+
+
+
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,6 +68,16 @@ function ProductForm() {
         }
     };
 
+
+
+
+
+
+
+
+
+
+    
     return (
         <form onSubmit={handleSubmit}>
             <input

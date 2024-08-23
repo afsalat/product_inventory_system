@@ -75,3 +75,10 @@
     color: green;
     font-weight: bold;
 }
+
+.delete {
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    
+}

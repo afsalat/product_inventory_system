@@ -92,13 +92,7 @@ def remove_stock(request):
 
 
 
-
-
 # Endpoint: view all products
-# class ProductListView(generics.ListAPIView):
-#     queryset = Products.objects.all()
-#     serializer_class = ProductSerializer
-
 @api_view(['GET'])
 def ProductListView(request):
     products = Products.objects.all()
@@ -106,3 +100,18 @@ def ProductListView(request):
     result_page = paginator.paginate_queryset(products, request)
     serializer = ProductSerializer(result_page, many=True)
     return paginator.get_paginated_response(serializer.data)
+
+
+# Endpoint: delete particular product
+@api_view(['DELETE'])
+def DeleteProduct(request):
+    try:
+        productid = request.data.get('productid')
+        product = Products.objects.filter(ProductID=productid).first()
+        if not product:
+            raise Response({"message":"product not founded"})
+
+        # pending
+        
+    except Exception as e:
+        raise Response({"error":str(e)}, status=500)
