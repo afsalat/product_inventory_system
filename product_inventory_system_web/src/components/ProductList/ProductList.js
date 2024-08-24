@@ -76,7 +76,7 @@
                                             <td>{product.ProductName}</td>
                                             <td>{product.ProductID}</td>
                                             <td>{product.ProductCode}</td>
-                                            <td>{product.Totalstock}</td>
+                                            <td><a className={product.TotalStock <= 0 ? 'out-of-stock' : 'in-stock'}>{Number(product.TotalStock).toFixed(2)}</a></td>
                                             <td>{product.CreatedUser}</td>
                                             <td>
                                                 <div className="details-container">

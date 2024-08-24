@@ -52,7 +52,9 @@ def add_stock(request):
             return Response({'error': 'Invalid stock amount'}, status=404)
 
         subvariant.stock += stock_to_add
+        product.TotalStock += stock_to_add
         subvariant.save()
+        product.save()
         return Response({"message": "Stock successfully added"}, status=200)
 
     except Exception as e:
@@ -82,7 +84,10 @@ def remove_stock(request):
             return Response({'error': 'Invalid stock amount'}, status=404)
 
         subvariant.stock -= stock_to_add
+        product.TotalStock -= stock_to_add
         subvariant.save()
+        product.save()
+
         return Response({"message": "Stock successfully added"}, status=200)
 
     except Exception as e:
