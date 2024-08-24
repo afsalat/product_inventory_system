@@ -106,7 +106,7 @@ def ProductListView(request):
 @api_view(['DELETE'])
 def DeleteProduct(request, productid):
     try:
-        productid = request.data.get(productid)
+        print("working del")
         product = Products.objects.filter(ProductID=productid).first()
         if not product:
             return Response({"message":"product not founded"}, status=404)
