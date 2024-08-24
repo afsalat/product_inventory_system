@@ -9,13 +9,10 @@
         const [totalPages, setTotalPages] = useState(1);
         const [pageSize, setPageSize] = useState(5);
         const [success, setSuccess] = useState('')
-        const [actionBanner, setActionBanner] = useState('')
 
         const onDelete = async (id) => {
             try {
-                const response = await axios.delete('http://127.0.0.1:8000/api/products/product-delete/', {
-                    data: {productid: id}
-                })
+                const response = await axios.delete(`http://127.0.0.1:8000/api/products/${id}/delete_product/`)
                 setProducts(products.filter(product => product.ProductID !== id));
                 setSuccess("successfully deleted !")
                 console.log("successfully deleted : ", response);

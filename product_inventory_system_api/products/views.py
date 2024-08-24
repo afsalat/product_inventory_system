@@ -104,14 +104,20 @@ def ProductListView(request):
 
 # Endpoint: delete particular product
 @api_view(['DELETE'])
-def DeleteProduct(request):
+def DeleteProduct(request, productid):
     try:
-        productid = request.data.get('productid')
+        productid = request.data.get(productid)
         product = Products.objects.filter(ProductID=productid).first()
         if not product:
-            raise Response({"message":"product not founded"})
-
-        # pending
+            return Response({"message":"product not founded"}, status=404)
+        
+        variant = Variant.objects.filter(product=product).first()
+        subvariant = SubVariant.objects.filter(variant=variant).first()
+        product.delete()
+        variant.delete()
+        subvariant.delete()
+        
+        return Response({"message":"successfully deleted"}, status=200)
         
     except Exception as e:
-        raise Response({"error":str(e)}, status=500)
+        return Response({"error":str(e)}, status=500)
