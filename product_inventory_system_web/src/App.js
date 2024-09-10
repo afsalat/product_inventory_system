@@ -5,12 +5,13 @@ import Login from './components/Login/Login';
 import Menu from './components/Menu/Menu';
 
 function App() {
+    
     return (
         <Router>
             <div className="App">
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="log/*" element={<Menu />} />
+                    <Route path="log/*" element={ localStorage.getItem('username') ? <Menu /> : <Login />}  /> 
                 </Routes>
             </div>
         </Router>

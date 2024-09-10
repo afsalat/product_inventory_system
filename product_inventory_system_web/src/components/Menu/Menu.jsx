@@ -3,11 +3,24 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProductForm from '../ProductForm/ProductForm';
 import ProductList from '../ProductList/ProductList';
 import StockManagement from '../StockManagement/StockManagement'
+import { useNavigate } from 'react-router-dom';
 
 function Menu() {
+    const navigate = useNavigate()
+    
+    const logout = async (e) => {
+        try {
+            localStorage.removeItem('username')
+            console.log("----logout,", localStorage.getItem('username'))
+            navigate('/')
+        } catch {
+            alert("not work")
+        }
+    }
     return (
         <><header>
             <h1>Product Inventory System</h1>
+            <h6 onClick={logout}>Logout</h6>
             <nav>
                 <ul>
                     <li><a href="/log/">Home</a></li>

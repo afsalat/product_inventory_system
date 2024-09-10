@@ -9,6 +9,9 @@ function Login() {
     const [error, setError] = useState(null);
     const navigate = useNavigate()
 
+
+    
+
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -19,7 +22,9 @@ function Login() {
             console.log("------",response.data);
             if (response.status === 200 && response.data.status === 'success') {
                 console.log("Login Successful:", response.data);
-                navigate('/og/'); 
+                localStorage.setItem('username', username)
+                console.log("----log,", localStorage.getItem('username'))
+                navigate('/log/'); 
            } else {
                 setError('Invalid login credentials.');  
            }
@@ -29,6 +34,9 @@ function Login() {
             
         }
     };
+
+
+
 
     return (
         <div className="login-container">

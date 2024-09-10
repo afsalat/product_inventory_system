@@ -22,6 +22,10 @@ header h1 {
   margin: 0;
 }
 
+header a {
+  margin-right: 0;
+}
+
 nav ul {
   list-style-type: none;
   padding: 0;
