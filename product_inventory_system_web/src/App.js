@@ -11,7 +11,7 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="log/*" element={ localStorage.getItem('username') ? <Menu /> : <Login />}  /> 
+                    <Route path="log/*" element={ localStorage.getItem('username') ? <Menu /> : <Login />}  />
                 </Routes>
             </div>
         </Router>

@@ -10,7 +10,6 @@ function Login() {
     const navigate = useNavigate()
 
 
-    
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -25,16 +24,15 @@ function Login() {
                 localStorage.setItem('username', username)
                 console.log("----log,", localStorage.getItem('username'))
                 navigate('/log/'); 
-           } else {
+            } else {
                 setError('Invalid login credentials.');  
-           }
+            }
         } catch (error) {
             setError('An error occurred during login. Please try again.');
             console.log(error);
             
         }
     };
-
 
 
 
