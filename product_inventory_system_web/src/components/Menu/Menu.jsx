@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import ProductForm from '../ProductForm/ProductForm';
 import ProductList from '../ProductList/ProductList';
 import StockManagement from '../StockManagement/StockManagement'
+import SupplierManagement from '../SupplierManagement/SupplierManagement';
 import { useNavigate } from 'react-router-dom';
 
 function Menu() {
@@ -27,6 +28,7 @@ function Menu() {
                     <li><a href="create-product">Create Product</a></li>
                     <li><a href="product-list">Product List</a></li>
                     <li><a href="stock-management">Stock Management</a></li>
+                    <li><a href="supplier-management">Supplier Management</a></li>
                 </ul>
             </nav>
         </header>
@@ -36,7 +38,8 @@ function Menu() {
                     <Route path="create-product" element={<ProductForm />} />
                     <Route path="product-list" element={<ProductList />} />
                     <Route path="stock-management" element={<StockManagement />} />
-                </Routes>
+                    <Route path="supplier-management" element={<SupplierManagement />} />
+                </Routes> 
             </main>
             </>
     );
