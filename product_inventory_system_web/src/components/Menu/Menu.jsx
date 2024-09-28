@@ -28,7 +28,7 @@ function Menu() {
                     <li><a href="create-product">Create Product</a></li>
                     <li><a href="product-list">Product List</a></li>
                     <li><a href="stock-management">Stock Management</a></li>
-                    <li><a href="supplier-management">Supplier Management</a></li>
+                    <li><a href="supplier-management/">Supplier Management</a></li>
                 </ul>
             </nav>
         </header>
@@ -38,7 +38,7 @@ function Menu() {
                     <Route path="create-product" element={<ProductForm />} />
                     <Route path="product-list" element={<ProductList />} />
                     <Route path="stock-management" element={<StockManagement />} />
-                    <Route path="supplier-management" element={<SupplierManagement />} />
+                    <Route path="supplier-management/" element={<SupplierManagement />} />
                 </Routes> 
             </main>
             </>
