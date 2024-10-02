@@ -20,8 +20,6 @@ function ProductForm() {
 
 
 
-
-
     const handleVariantAdd = () => {
         if (!variantName || !variantOptions) {
             setErrorMessage("Variant name and options cannot be empty.");

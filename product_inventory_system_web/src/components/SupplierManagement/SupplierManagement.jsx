@@ -1,7 +1,7 @@
 import React from 'react'
 import './SupplierManagement.css'
-import { Router, Routes, Route } from 'react-router-dom'
-import CreateSupplier from './CreateSupplier/CreateSupplier'
+import { Routes, Route } from 'react-router-dom'
+import CreateSupplier from '../SupplierManagement/CreateSupplier/CreateSupplier'
 import SearchAndUpdate from './SearchAndUpdateSupplier/SearchAndUpdateSupplier'
 import ViewAllSupplier from './ViewAllSupplier/ViewAllSupplier'
 
@@ -17,11 +17,13 @@ function SupplierManagement() {
             <a href="view-all-supplier">
                 <button className='sup_btn' type="button">View All Supplier</button>
             </a>
+            <main>
             <Routes>
-                <Route path='create-supplier' element={<CreateSupplier/>} />
-                <Route path='search-and-update-supplier' element={<SearchAndUpdate/>}/>
-                <Route path='view-all-suppliers' element={<ViewAllSupplier/>} />
+                <Route path='create-supplier' element={<CreateSupplier />} />
+                <Route path='search-and-update-supplier' element={<SearchAndUpdate />} />
+                <Route path='view-all-suppliers' element={<ViewAllSupplier />} />
             </Routes>
+            </main>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import ProductForm from '../ProductForm/ProductForm';
 import ProductList from '../ProductList/ProductList';
-import StockManagement from '../StockManagement/StockManagement'
+import StockManagement from '../StockManagement/StockManagement';
 import SupplierManagement from '../SupplierManagement/SupplierManagement';
 import { useNavigate } from 'react-router-dom';
 
