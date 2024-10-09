@@ -1,31 +1,31 @@
-import React from 'react'
-import './SupplierManagement.css'
-import { Routes, Route } from 'react-router-dom'
-import CreateSupplier from '../SupplierManagement/CreateSupplier/CreateSupplier'
-import SearchAndUpdate from './SearchAndUpdateSupplier/SearchAndUpdateSupplier'
-import ViewAllSupplier from './ViewAllSupplier/ViewAllSupplier'
+import React from 'react';
+import { Link, Routes, Route } from 'react-router-dom';
+import './SupplierManagement.css';
+import CreateSupplier from '../SupplierManagement/CreateSupplier/CreateSupplier';
+import SearchAndUpdate from './SearchAndUpdateSupplier/SearchAndUpdateSupplier';
+import ViewAllSupplier from './ViewAllSupplier/ViewAllSupplier';
 
 function SupplierManagement() {
     return (
         <div>
-            <a href="create-supplier">
+            <Link to="create-supplier">
                 <button className='sup_btn' type="button">Create Supplier</button>
-            </a>
-            <a href="search-and-update-supplier">
-                <button className='sup_btn' type="button">Search and Update Supplier</button>
-            </a>
-            <a href="view-all-supplier">
+            </Link>
+            <Link to="search-and-update-supplier">
+                <button className='sup_btn' type="button">Update Supplier</button>
+            </Link>
+            <Link to="view-all-supplier">
                 <button className='sup_btn' type="button">View All Supplier</button>
-            </a>
+            </Link>
             <main>
-            <Routes>
-                <Route path='create-supplier' element={<CreateSupplier />} />
-                <Route path='search-and-update-supplier' element={<SearchAndUpdate />} />
-                <Route path='view-all-suppliers' element={<ViewAllSupplier />} />
-            </Routes>
+                <Routes>
+                    <Route path='create-supplier' element={<CreateSupplier />} />
+                    <Route path='search-and-update-supplier' element={<SearchAndUpdate />} />
+                    <Route path='view-all-suppliers' element={<ViewAllSupplier />} />
+                </Routes>
             </main>
         </div>
-    )
+    );
 }
 
-export default SupplierManagement
+export default SupplierManagement;

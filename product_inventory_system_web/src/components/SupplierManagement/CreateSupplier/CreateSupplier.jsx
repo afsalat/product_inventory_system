@@ -56,7 +56,7 @@ function CreateSupplier() {
                 placeholder="address"
                 value={supplier.address}
             />
-            <input type="submit" />
+            <button type="submit">CREATE</button>
         </form>
     );
 }
