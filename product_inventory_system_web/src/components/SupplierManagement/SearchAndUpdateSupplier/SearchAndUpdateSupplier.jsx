@@ -20,7 +20,7 @@ function SearchAndUpdateSupplier() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h1>this is create supplier </h1>
+            <h1>Search and Update Supplier </h1>
             <input
                 onChange={handleChange}
                 type="text"
@@ -39,17 +39,17 @@ function SearchAndUpdateSupplier() {
                     />
                 ))
             ):(
-                <h6>Supplier not found</h6>
+                <h6>Please Try...</h6>
             )}
-            <input
+            {/* <input
                 onChange={handleChange}
                 type="text"
                 name="contact_person"
                 placeholder="Contact Person"
                 value={supplier.contact_person}
-            />
+            /> */}
 
-            <button type="submit">CREATE</button>
+            <button type="submit">SEARCH</button>
         </form>
     );
 }

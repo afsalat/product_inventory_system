@@ -20,7 +20,7 @@ function CreateSupplier() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h1>this is create supplier </h1>
+            <h1>Create New Supplier</h1>
             <input
                 onChange={handleChange}
                 type="text"
