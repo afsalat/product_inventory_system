@@ -86,8 +86,12 @@ WSGI_APPLICATION = 'product_inventory_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'your_database_name',  # Your MySQL database name
+        'USER': 'afsalat',             # Your MySQL username
+        'PASSWORD': 'your_password',   # Your MySQL password
+        'HOST': '127.0.0.1',           # Use '127.0.0.1' instead of 'localhost'
+        'PORT': '3306',                 # MySQL port (default is 3306)
     }
 }
 
