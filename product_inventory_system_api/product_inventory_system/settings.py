@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,16 +87,11 @@ WSGI_APPLICATION = 'product_inventory_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'product_inventory_system',  # Your MySQL database name
-        'USER': 'root',             # Your MySQL username
-        'PASSWORD': 'root',   # Your MySQL password
-        'HOST': '127.0.0.1',           # Use '127.0.0.1' instead of 'localhost'
-        'PORT': '3306',                 # MySQL port (default is 3306)
-    }
+    'default': dj_database_url.config(default='mysql://root:isqGpmMeiwMPxgWvnWUUdTJMdPdEzrjB@junction.proxy.rlwy.net:48884/railway')
 }
+
 
 
 # Password validation
@@ -130,7 +128,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
