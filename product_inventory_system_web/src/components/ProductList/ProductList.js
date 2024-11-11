@@ -12,7 +12,7 @@
 
         const onDelete = async (id) => {
             try {
-                const response = await axios.delete(`http://127.0.0.1:8000/api/products/${id}/delete_product/`)
+                const response = await axios.delete(`http://127.0.0.1:8000/products/${id}/delete_product/`)
                 setProducts(products.filter(product => product.ProductID !== id));
                 setSuccess("successfully deleted !")
                 console.log("successfully deleted : ", response);
@@ -27,7 +27,7 @@
         useEffect(() => {
             const fetchProducts = async () => {
                 try {
-                    const response = await axios.get('http://127.0.0.1:8000/api/products/', {
+                    const response = await axios.get('http://127.0.0.1:8000/products/', {
                         params: {
                             page: page,
                             page_size: pageSize

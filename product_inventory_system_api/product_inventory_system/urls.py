@@ -20,10 +20,12 @@ from product_inventory_system import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('products.urls')),
-    path('login/', include('members.urls')),
+    path('', include('products.urls')),
+    path('',include('user.urls'))
+    # path('',include('django.contrib.auth.urls'))
 ]
 
 

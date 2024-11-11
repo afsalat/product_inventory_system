@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0i+qlnj!az&q^nvlsx#rgyn19v47^bi_dt1-+2ulf(t9w+05j#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['product-inventory-system', 'localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ['product-inventory-system', 'localhost', '127.0.0.1']
 
 APPEND_SLASH = False
 
@@ -43,9 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'products',
-    'members',
     'corsheaders',
     'rest_framework_simplejwt',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -88,9 +88,22 @@ WSGI_APPLICATION = 'product_inventory_system.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': dj_database_url.config(default='mysql://root:isqGpmMeiwMPxgWvnWUUdTJMdPdEzrjB@junction.proxy.rlwy.net:48884/railway')
+# }
+
+
 DATABASES = {
-    'default': dj_database_url.config(default='mysql://root:isqGpmMeiwMPxgWvnWUUdTJMdPdEzrjB@junction.proxy.rlwy.net:48884/railway')
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'product_inventory_system',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',           
+        'PORT': '3306',
+    }
 }
+
 
 
 

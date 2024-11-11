@@ -30,7 +30,7 @@ function StockManagement() {
         setSuccess('');
 
         try {
-            await axios.patch('http://127.0.0.1:8000/api/products/add_stock/', { 
+            await axios.patch('http://127.0.0.1:8000/products/add_stock/', { 
                 productname: productName, 
                 variantname: variantName, 
                 option, 
@@ -61,7 +61,7 @@ function StockManagement() {
         setSuccess('');
 
         try {
-            await axios.patch('http://127.0.0.1:8000/api/products/remove_stock/', { 
+            await axios.patch('http://127.0.0.1:8000/products/remove_stock/', { 
                 productname: productName, 
                 variantname: variantName, 
                 option, 

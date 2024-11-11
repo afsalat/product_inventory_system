@@ -58,7 +58,7 @@ function ProductForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://127.0.0.1:8000/api/products/create/', product);
+            await axios.post('http://127.0.0.1:8000/products/create/', product);
             alert('Product created successfully');
             setProduct({ ProductName: '', ProductID: '', ProductCode: '', CreatedUser: 1, variants: [] });
         } catch (error) {
