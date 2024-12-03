@@ -14,7 +14,7 @@ function SupplierManagement() {
             <Link to="search-and-update-supplier">
                 <button className='sup_btn' type="button">Update Supplier</button>
             </Link>
-            <Link to="view-all-supplier">
+            <Link to="view-all-suppliers">
                 <button className='sup_btn' type="button">View All Supplier</button>
             </Link>
             <main>
