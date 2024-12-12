@@ -2,6 +2,8 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Supplier, PageNumberPagination
+import traceback
+from .serializers import SupplierSerializer
 
 
 
@@ -10,13 +12,17 @@ from .models import Supplier, PageNumberPagination
 def ViewAllSuppliers(request):
     try:
         suppliers = Supplier.objects.all()
+        print("--",suppliers)
         paginator = PageNumberPagination()
         paginated_suppliers = paginator.paginate_queryset(suppliers, request)
-        data = paginated_suppliers.get_paginated_response(paginated_suppliers.data)
+        serializer = SupplierSerializer(paginated_suppliers, many=True)
+        data = paginator.get_paginated_response(serializer.data)
+        print(">>",data)
 
         return Response({'message':data}, status=200)
 
     except Exception as e:
+        print(traceback.format_exc())
         return Response({"error":str(e)}, status=500)
     
 
